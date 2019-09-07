@@ -2,9 +2,10 @@
   "builders": [
     {
       "boot_command": [
-        "<esc><wait>",
-        "<esc><wait>",
-        "<enter><wait>",
+        "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
         "/install/vmlinuz<wait>",
         " auto<wait>",
         " console-setup/ask_detect=false<wait>",
@@ -62,9 +63,10 @@
     },
     {
       "boot_command": [
-        "<esc><wait>",
-        "<esc><wait>",
-        "<enter><wait>",
+        "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
         "/install/vmlinuz<wait>",
         " auto<wait>",
         " console-setup/ask_detect=false<wait>",
@@ -94,12 +96,12 @@
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_url": "{{user `mirror`}}/{{user `mirror_directory`}}/{{user `iso_name`}}",
       "output_directory": "../builds/packer-{{user `template`}}-qemu",
-      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
+      "shutdown_command": "echo 'vagrant'|sudo -S shutdown -P now",
       "ssh_password": "vagrant",
       "ssh_port": 22,
-      "accelerator": "kvm",
       "ssh_username": "vagrant",
       "ssh_wait_timeout": "10000s",
+      "accelerator": "kvm",
       "type": "qemu",
       "vm_name": "{{ user `template` }}",
       "qemuargs": [
@@ -138,13 +140,14 @@
         "../common/scripts/vagrant.sh",
         "../common/scripts/virtualbox.sh",
         "../common/scripts/ubuntu/cleanup.sh",
-        "../common/scripts/minimize.sh"
+        "../common/scripts/minimize.sh",
+        "../common/scripts/ubuntu/microk8s.sh"
       ],
       "type": "shell"
     }
   ],
   "variables": {
-    "box_basename": "ubuntu-18.04",
+    "box_basename": "aio",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
     "disk_size": "204800",
@@ -152,16 +155,16 @@
     "headless": "",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "iso_checksum": "7d8e0055d663bffa27c1718685085626cb59346e7626ba3d3f476322271f573e",
+    "iso_checksum": "0a03608988cfd2e50567990dc8be96fb3c501e198e2e6efcb846d89efc7b89f2",
     "iso_checksum_type": "sha256",
-    "iso_name": "ubuntu-18.04.3-server-amd64.iso",
+    "iso_name": "ubuntu-16.04.4-server-amd64.iso",
     "memory": "1024",
-    "mirror": "http://cdimage.ubuntu.com",
-    "mirror_directory": "ubuntu/releases/18.04/release",
-    "name": "ubuntu-18.04",
+    "mirror": "http://releases.ubuntu.com",
+    "mirror_directory": "16.04.4",
+    "name": "ubuntu-16.04",
     "no_proxy": "{{env `no_proxy`}}",
     "preseed_path": "preseed.cfg",
-    "template": "ubuntu-18.04-amd64",
+    "template": "ubuntu-16.04-amd64",
     "version": "TIMESTAMP"
   }
 }
