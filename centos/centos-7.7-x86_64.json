@@ -57,6 +57,9 @@
       "ssh_wait_timeout": "10000s",
       "accelerator": "kvm",
       "type": "qemu",
+      "qemuargs": [
+        ["-m", "1024M"]
+      ],
       "vm_name": "{{ user `template` }}"
     }
   ],
@@ -66,47 +69,25 @@
       "type": "vagrant"
     }
   ],
-  "provisioners": [
-    {
-      "environment_vars": [
-        "HOME_DIR=/home/vagrant",
-        "http_proxy={{user `http_proxy`}}",
-        "https_proxy={{user `https_proxy`}}",
-        "no_proxy={{user `no_proxy`}}"
-      ],
-      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
-      "expect_disconnect": true,
-      "scripts": [
-        "../common/scripts/centos7/update.sh",
-        "../common/scripts/sshd.sh",
-        "../common/scripts/centos7/networking.sh",
-        "../common/scripts/vagrant.sh",
-        "../common/scripts/virtualbox.sh",
-        "../common/scripts/centos7/cleanup.sh",
-        "../common/scripts/minimize.sh"
-      ],
-      "type": "shell"
-    }
-  ],
   "variables": {
-    "box_basename": "centos-7.6",
+    "box_basename": "centos-7.7",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
-    "disk_size": "204800",
+    "disk_size": "1000000",
     "git_revision": "__unknown_git_revision__",
     "headless": "",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "iso_checksum": "9bba3da2876cb9fcf6c28fb636bcbd01832fe6d84cd7445fa58e44e569b3b4fe",
+    "iso_checksum": "6ffa7ad44e8716e4cd6a5c3a85ba5675a935fc0448c260f43b12311356ba85ad",
     "iso_checksum_type": "sha256",
-    "iso_name": "CentOS-7-x86_64-DVD-1908.iso",
+    "iso_name": "CentOS-7-x86_64-NetInstall-1908.iso",
     "ks_path": "ks.cfg",
     "memory": "1024",
     "mirror": "http://mirrors.kernel.org/centos",
     "mirror_directory": "7.7.1908/isos/x86_64",
-    "name": "centos-7.6",
+    "name": "centos-7.7",
     "no_proxy": "{{env `no_proxy`}}",
-    "template": "centos-7.6-x86_64",
+    "template": "centos-7.7-x86_64",
     "version": "TIMESTAMP"
   }
 }
