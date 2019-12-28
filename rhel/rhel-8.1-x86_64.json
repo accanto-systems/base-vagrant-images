@@ -26,29 +26,30 @@
   ],
   "post-processors": [
     {
-      "output": "../builds/{{user `box_basename`}}.{{.Provider}}.box",
+      "output": "{{ user `build_directory` }}/{{user `box_basename`}}.{{.Provider}}.box",
       "type": "vagrant"
     }
   ],
   "variables": {
     "arch": "64",
-    "box_basename": "rhel-7.7",
+    "box_basename": "rhel-8.1",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
-    "disk_size": "1000000",
+    "disk_size": "65536",
     "git_revision": "__unknown_git_revision__",
     "headless": "",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "iso_checksum": "88b42e934c24af65e78e09f0993e4dded128d74ec0af30b89b3cdc02ec48f028",
+    "guest_additions_url": "",
+    "iso_checksum": "2323ad44d75df1a1e83048a34e196ddfedcd6c0f6c49ea59bf08095e3bb9ef65",
     "iso_checksum_type": "sha256",
-    "iso_name": "rhel-server-7.7-x86_64-dvd.iso",
-    "ks_path": "7/ks.cfg",
+    "iso_name": "rhel-8.1-x86_64-dvd.iso",
+    "ks_path": "8/ks.cfg",
     "memory": "1024",
     "mirror": "file://",
-    "name": "rhel-7.6",
+    "name": "rhel-8.1",
     "no_proxy": "{{env `no_proxy`}}",
-    "template": "rhel-7.7-x86_64",
+    "template": "rhel-8.1-x86_64",
     "version": "TIMESTAMP"
   }
 }
